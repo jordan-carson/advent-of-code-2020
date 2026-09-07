@@ -19,6 +19,13 @@ a place to get answers.
 - `timer.py` — a stdlib-only staged timer that mirrors the assessment's
   time pressure across six stages instead of four. Language-agnostic — use
   it for either track below.
+- `grader/` — an auto-grader: run `python3 grader/grade.py score --lang
+  python --problem key_value_store` (or `--lang go`) against whichever
+  starter you've filled in, and it reports a modeled score against the
+  reported 600-850 CodeSignal scale and ~835 cutoff — correctness, code
+  quality, and (if you ran `grader/grade.py watch` during the attempt)
+  time efficiency. See `grader/README.md` for exactly what's modeled vs.
+  invented.
 
 ## Two language tracks, same specs
 
