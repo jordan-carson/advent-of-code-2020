@@ -83,3 +83,13 @@ Constraints to practice under, matching the real assessment: standard
 library only in either language (no `pip install`, no `go get`), and you
 can see all the tests for a level before writing code for it — so read
 every test in a level before touching the implementation.
+
+## Go concurrency primitives
+
+`go/concurrency/` is a separate, ungraded drill set for the tools the
+systems above only lightly touch: goroutines, channels (unbuffered and
+buffered), `select`, `sync.WaitGroup`/`Mutex`/`RWMutex`/`Once`, and
+`context.Context` — plus ownership/message-passing as the pattern that
+ties them together. Ten small isolated packages, one primitive each, same
+no-solution-stubs style. See `go/concurrency/README.md` for the order and
+exactly which stretch level in `problems/` each one unlocks.
