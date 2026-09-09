@@ -84,12 +84,28 @@ library only in either language (no `pip install`, no `go get`), and you
 can see all the tests for a level before writing code for it — so read
 every test in a level before touching the implementation.
 
-## Go concurrency primitives
+## Concurrency primitives
 
-`go/concurrency/` is a separate, ungraded drill set for the tools the
-systems above only lightly touch: goroutines, channels (unbuffered and
-buffered), `select`, `sync.WaitGroup`/`Mutex`/`RWMutex`/`Once`, and
-`context.Context` — plus ownership/message-passing as the pattern that
-ties them together. Ten small isolated packages, one primitive each, same
-no-solution-stubs style. See `go/concurrency/README.md` for the order and
-exactly which stretch level in `problems/` each one unlocks.
+Two parallel, ungraded drill sets for the tools the systems above only
+lightly touch: goroutines/threads, channels (unbuffered and buffered),
+`select`, `WaitGroup`/`Mutex`/`RWMutex`/`Once`, and a `Context` — plus
+ownership/message-passing as the pattern tying them together. Ten small
+isolated exercises each, same no-solution-stubs style:
+
+- **`python/concurrency/`** — the primary track (Python is the faster
+  language to iterate in without leaning on AI tooling while practicing).
+  Four of the ten primitives don't exist in Python's stdlib at all
+  (`WaitGroup`, `RWMutex`, `Once`, `Context`) — you build them from
+  `threading.Lock`/`Condition` yourself, which is most of the exercise's
+  value. See `python/concurrency/README.md` for the Go→Python
+  terminology map and two important caveats (no `-race` equivalent, and
+  the GIL changes what "concurrent" actually buys you — `rwmutex/`'s
+  benchmark shows a plain `Mutex` beating a hand-built `RWLock` for pure
+  in-memory work, the opposite of Go's result, for a real reason).
+- **`go/concurrency/`** — the original Go version, same ten primitives
+  built on stdlib types directly (`sync.Mutex`, `sync.RWMutex`,
+  `sync.Once`, `context.Context`). See `go/concurrency/README.md`.
+
+Both point at the same stretch levels in `problems/`: `build_system`
+Level 4 parallelism, `web_crawler` Level 4 distributed crawling, and a
+real (not simulated-`now`) `rate_limiter` or `key_value_store`.
